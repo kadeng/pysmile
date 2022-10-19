@@ -28,7 +28,7 @@ vds.ReadFile('/data/fast/ltm_wifi_test/NISLTM/validation_set.csv')
 vds.RemoveVar(vds.FindVariable("wifi_usage"))
 
 vdsmatch = DSNetworkMatch(learnedTANNetwork)
-print vdsmatch.attachDataset(vds)
+print(vdsmatch.attachDataset(vds))
 
 wifi_usage_node = learnedTANNetwork.FindNode("wifi_usage")
 learnedTANNetwork.ClearAllEvidence()
@@ -46,10 +46,10 @@ for i in range(len(validation_y)):
     diff = float(validation_y[i]) - prob
     sum_of_squares += diff*diff
 
-print sqrt(sum_of_squares)
+print(sqrt(sum_of_squares))
 ///
 
-print vdsmatch.attachDataset(tds)
+print(vdsmatch.attachDataset(tds))
 train_y = np.array(train_set.wifi_usage=='s1_below_0', dtype=np.int8)
 for i in range(len(train_y)):
     vdsmatch.enterEvidenceFromDatasetRow(i)
@@ -59,7 +59,7 @@ for i in range(len(train_y)):
     diff = float(train_y[i]) - prob
     sum_of_squares += diff*diff
     
-print sqrt(sum_of_squares)
+print(sqrt(sum_of_squares))
 ///
 ds.RemoveVar(ds.FindVariable("wifi_usage"))
 ///

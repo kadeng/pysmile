@@ -26,17 +26,17 @@ sa2 = DSL_stringArray(20,10)
 for i in range(0,20):
     sa2.SetString(i, "Alles klar %d" % (i))
     
-print sa2.Subscript(10)
+print(sa2.Subscript(10))
 # Basic id array functionality
 ia2 = DSL_idArray(20,10)
 
 for i in range(0,20):
     ia2.SetString(i, "AllesKlar%d" % (i))
     
-print ia2.Subscript(10)
+print(ia2.Subscript(10))
 ia2.SetString(4, "Alles Klar %d" % (4))
 
-print ia2.Subscript(4)
+print(ia2.Subscript(4))
 ar = toDSL_intArray([1,2,3])
 ari = intArray.frompointer(ar.Items())
 
@@ -119,24 +119,24 @@ va[0]
 ds2 = DSL_dataset()
 ds2.ReadFile('/data/fast/ltm_wifi_test/NISLTM/train_set.csv')
 for name in ds2.GetStateNames(ds2.FindVariable("domain_content")):
-    print name
+    print(name)
 
 for name in vds.GetStateNames(vds.FindVariable("domain_content")):
-    print name
+    print(name)
 
 x = DSNetworkMatch(learnedTANNetwork)
-print x.attachDataset(vds)
+print(x.attachDataset(vds))
 wifi_usage_node = learnedTANNetwork.FindNode("wifi_usage")
 learnedTANNetwork.ClearAllEvidence()
 learnedTANNetwork.UpdateBeliefs()
 va = doubleArray.frompointer(learnedTANNetwork.GetNode(wifi_usage_node).Value().GetMatrix().GetItems().Items())
-print va[0]
+print(va[0])
 
 for i in range(10):
     x.enterEvidenceFromDatasetRow(21*i)
     learnedTANNetwork.UpdateBeliefs()
-    print va[0]
+    print(va[0])
 
 outc = ndef.GetOutcomesNames()
 for i in range(outc.GetSize()):
-    print outc.Subscript(i)
+    print(outc.Subscript(i))
